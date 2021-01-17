@@ -8,10 +8,11 @@
 <article>
   <div class="blog-item-wrap">
     <div class="post-inner-content">
+    {% if page.slug != 'about' %}
       <header class="entry-header page-header">
-        <span class="cat-item"><time datetime="{{ page.modified }}">Last Modified {{ page.locale_modified }}</time></span>
-        <h1 class="entry-title"><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></h1>
+        <h1 class="entry-title">{{ page.summary }}</h1>
       </header><!-- .entry-header -->
+    {% endif %}
       <div class="entry-content">
         {{ page.content }}
       </div><!-- .entry-content -->

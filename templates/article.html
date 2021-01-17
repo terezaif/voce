@@ -7,16 +7,20 @@
   {%- endif -%}
   {{article.tags|join(', ') }}">
 
+  {% if FUZZY_DATES %}
+  {% assets filters="slimit", output="js/lw-timeago.%(version)s.min.js", "js/lw-timeago/lw-timeago.js" %}
 <meta property="og:title" content="{{ article.title }}">
 <meta property="og:type" content="website">
-{% if article.ogimage %}
-<meta property="og:image" content="http://{{ GOOGLE_ANALYTICS_PROP }}/{{ article.ogimage }}"/>
-<meta property="og:image:secure_url" content="https://{{ GOOGLE_ANALYTICS_PROP }}/{{ article.ogimage }}"/>
-{% endif %}
-<meta property="og:site_name" content="https://{{ GOOGLE_ANALYTICS_PROP }}">
-<meta property="og:description" content="{{ article.summary|striptags|e }}">
-<meta property="og:url" content="https://{{ GOOGLE_ANALYTICS_PROP }}/articles/{{ article.slug }}.html">
-
+<meta property="og:image" content="{{ SITEURL }}/{{ article.ogimage }}"/>
+<meta property="og:image:secure_url" content="{{ SITEURL }}/{{ article.ogimage }}"/>
+<meta property="og:site_name" content="{{ SITEURL }}">
+<meta property="og:description" content="{{ article.summary|striptags }}">
+<meta property="og:url" content="http://{{ SITEURL }}/articles/{{ article.slug }}.html">
+<meta property="fb:admins" content=""/>
+<meta property="fb:app_id" content=""/>
+<script src="{{ SITEURL }}/{{ ASSET_URL }}" type="text/javascript"></script>
+  {% endassets%}
+  {% endif %}
 {% endblock %}
 {% block metatitle %}{{ article.title|striptags|escape }}{% endblock %}
 {% block title %}{{ article.title|striptags|escape }}{% endblock %}
