@@ -1038,3 +1038,12 @@ p img{
   display: block;
   margin: 0 auto;
 }
+
+.img_center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height:auto; 
+  width:auto;
+  width: 100%;
+}
